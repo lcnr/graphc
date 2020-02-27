@@ -121,6 +121,7 @@ impl Graph {
 }
 
 /// A valid coloring for a given graph.
+#[derive(Debug, Clone)]
 pub struct Coloring {
     /// The amount of unique colors needed.
     pub k: usize,
