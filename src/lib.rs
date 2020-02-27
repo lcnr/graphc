@@ -53,14 +53,13 @@ impl Graph {
     }
 
     /// Adds an edge between `a` and `b`.
-    ///
-    /// # Panic
-    ///
-    /// This method panics if `a == b`.
+    /// 
+    /// Edges with `a` == `b` are ignored.
     pub fn add_edge(&mut self, a: NodeId, b: NodeId) {
-        assert_ne!(a, b);
-        self.nodes[a].add(b);
-        self.nodes[b].add(a);
+        if a != b {
+            self.nodes[a].add(b);
+            self.nodes[b].add(a);
+        }
     }
 
     /// Removes the edge between `a` and `b`.
