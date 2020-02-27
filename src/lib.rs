@@ -88,7 +88,8 @@ impl Graph {
         // In case no such node exists, set `k` to the current minimum.
         'outer: while !alive.is_empty() {
             let mut min_k = usize::max_value();
-            for node in alive.iter() {
+            // iter in reverse so colors have the same order as nodes.
+            for node in alive.iter().rev() {
                 let connected = graph[node].element_count();
                 if connected < k {
                     alive.remove(node);
